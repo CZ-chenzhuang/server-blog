@@ -10,7 +10,7 @@ const getPostData = (req) => {
       resolve({})
       return
     }
-    if (req.headers['content-type'] !== 'application/json') {
+    if (!req.headers['content-type']?.includes('application/json')) {
       resolve({})
       return   
     }
@@ -60,15 +60,14 @@ const setCookieExpire = () => {
 }
 
 const app = async (req,res) => {
-  console.log(req.host, 'host')
   res.setHeader('Content-type', 'application/json')
   const url = req.url
   const { cookie } = req.headers
   const path = url.split('?')[0]
   req.path = path
   req.query = qs.parse(url.split('?')[1])
-
   let postData = await getPostData(req)
+  console.log(req.headers.host, postData, 'req')
   req.body = postData
 
   req.cookie = {}

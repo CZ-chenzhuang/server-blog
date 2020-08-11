@@ -5,11 +5,9 @@ const { setRedis, getRedis } = require('../db/redis')
 const userBlog = (req,res) => {
   const method = req.method
   const { path, sessionId } = req
-
   // 博客登录接口
-  if (method === 'GET' && path === '/api/user/login') {
-    // const { body: { username, password } } = req
-    const { username, password } = req.query
+  if (method === 'POST' && path === '/api/user/login') {
+    const { body: { username, password } } = req
     const { sessionId } = req
     const result = loginCheck(username, password)
     return result.then(val => {

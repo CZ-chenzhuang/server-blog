@@ -11,10 +11,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cross-env": "^7.0.2"
+    "cross-env": "^7.0.2",
+    "nodemon": "^2.0.4"
   },
   "dependencies": {
     "mysql": "^2.18.1",
-    "redis": "^3.0.2"
+    "redis": "^3.0.2",
+    "xss": "^1.0.8"
   }
 }
